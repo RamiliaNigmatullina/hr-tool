@@ -16,6 +16,7 @@ class FeedbacksController < ApplicationController
   end
 
   def create
+    binding.pry
     feedback.save
 
     respond_with feedback
@@ -36,6 +37,6 @@ class FeedbacksController < ApplicationController
   def feedback_params
     params.require(:feedback).permit(:user_id,
       :assessment_id,
-      "skill_feedbacks_attributes": [:score])
+      "skill_feedbacks_attributes": [:score, :skill_id, :comment])
   end
 end
