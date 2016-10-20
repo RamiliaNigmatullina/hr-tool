@@ -33,7 +33,7 @@
 ## Resources
 
 - Testing server: [https://hr-tool.herokuapp.com](https://hr-tool.herokuapp.com)
-- Tasks: [https://www.pivotaltracker.com/n/projects/1893815](https://www.pivotaltracker.com/n/projects/1893815)
+- Tasks: [https://trello.com/b/M6fnp2sI/hr-tool](https://trello.com/b/M6fnp2sI/hr-tool)
 
 ## Credits
 
