@@ -51,3 +51,13 @@ Style/FrozenStringLiteralComment:
 
 Style/StringMethods:
   Enabled: true
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 12
+

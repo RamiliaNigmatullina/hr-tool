@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :skill_feedbacks
   resources :feedbacks
   resources :invites
