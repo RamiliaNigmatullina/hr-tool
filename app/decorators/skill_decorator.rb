@@ -1,3 +1,3 @@
 class SkillDecorator < ApplicationDecorator
-  delegate_all]
+  delegate_all
 end
