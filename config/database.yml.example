@@ -1,0 +1,15 @@
+defaults: &defaults
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  min_messages: warning
+  timeout: 5000
+  pool: 5
+
+development:
+  database: hr-tool_dev
+  <<: *defaults
+
+test:
+  database: hr-tool_test
+  <<: *defaults
