@@ -2,6 +2,10 @@
 
 # HR Tool
 ### Project from Flatstack Sandbox
+[![Build Status](https://semaphoreci.com/api/v1/ramilia/hr-tool/branches/master/badge.svg)](https://semaphoreci.com/ramilia/hr-tool)
+[![Test Coverage](https://codeclimate.com/github/FlatstackSandbox/hr-tool/badges/coverage.svg)](https://codeclimate.com/github/FlatstackSandbox/hr-tool/coverage)
+[![Code Climate](https://codeclimate.com/github/FlatstackSandbox/hr-tool/badges/gpa.svg)](https://codeclimate.com/github/FlatstackSandbox/hr-tool)
+
 
 ## Getting Started
 
@@ -29,7 +33,7 @@
   ```bash
   bin/server
   ```
-  
+
 ## Resources
 
 - Testing server: [https://hr-tool.herokuapp.com](https://hr-tool.herokuapp.com)
