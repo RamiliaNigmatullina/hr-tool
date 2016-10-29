@@ -5,6 +5,7 @@ FactoryGirl.define do
     password_confirmation { password }
     level 1
     confirmed_at 1.hour.ago
+    email { generate :hr_email }
   end
 
   trait :hr do
