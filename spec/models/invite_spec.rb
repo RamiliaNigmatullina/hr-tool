@@ -5,4 +5,5 @@ describe Invite do
   it { should belong_to(:assessment) }
 
   it { is_expected.to validate_presence_of :user }
+  it { is_expected.to validate_presence_of :assessment }
 end
