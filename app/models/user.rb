@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
   has_many :invites, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
-  # attachment :profile_image
-
   def full_name_with_role
     "#{full_name} (#{role.upcase})"
   end
