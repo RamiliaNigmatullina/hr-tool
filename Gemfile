@@ -41,6 +41,7 @@ gem "puma"
 gem "pundit"
 gem "rack-canonical-host"
 gem "rack-mini-profiler", require: false
+gem "rails-i18n"
 gem "responders"
 gem "rollbar"
 gem "seedbank"
