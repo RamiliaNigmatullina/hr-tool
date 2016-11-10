@@ -17,6 +17,9 @@ class FeedbacksController < ApplicationController
   end
 
   def create
+    feedback.invite.relevance = false
+
+    feedback.invite.save
     feedback.save
 
     respond_with feedback
@@ -37,6 +40,7 @@ class FeedbacksController < ApplicationController
   def feedback_params
     params.require(:feedback).permit(:user_id,
       :assessment_id,
+      :invite_id,
       "skill_feedbacks_attributes": %i(score skill_id comment))
   end
 
