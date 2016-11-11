@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109102801) do
+ActiveRecord::Schema.define(version: 20161111065258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161109102801) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -34,13 +35,17 @@ ActiveRecord::Schema.define(version: 20161109102801) do
     t.integer  "assessment_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "invite_id"
   end
+
+  add_index "feedbacks", ["invite_id"], name: "index_feedbacks_on_invite_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
     t.integer  "assessment_id"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "relevance",     default: true, null: false
   end
 
   create_table "skill_feedbacks", force: :cascade do |t|
@@ -59,8 +64,8 @@ ActiveRecord::Schema.define(version: 20161109102801) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",   null: false
-    t.string   "encrypted_password",     limit: 255, default: "",   null: false
+    t.string   "email",                  limit: 255, default: "",         null: false
+    t.string   "encrypted_password",     limit: 255, default: "",         null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -73,11 +78,11 @@ ActiveRecord::Schema.define(version: 20161109102801) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.string   "full_name",              limit: 255
-    t.string   "role",                               default: "hr", null: false
-    t.integer  "level",                              default: 1,    null: false
+    t.string   "role",                               default: "employee", null: false
+    t.integer  "level",                              default: 1,          null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "profile_image"
@@ -86,4 +91,5 @@ ActiveRecord::Schema.define(version: 20161109102801) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "feedbacks", "invites"
 end

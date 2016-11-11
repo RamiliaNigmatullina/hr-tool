@@ -5,4 +5,10 @@ class Assessment < ActiveRecord::Base
   has_many :feedbacks, dependent: :destroy
 
   validates :user, :date, presence: true
+
+  scope :unarchived, -> { where(deleted_at: nil) }
+
+  def unarchived?
+    assessment.deleted_at.blank?
+  end
 end
