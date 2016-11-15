@@ -6,8 +6,10 @@ class AssessmentsController < ApplicationController
   expose :user
   expose :assessment
   expose :assessments, -> { user.assessments }
-  expose :invites, -> { fetch_invites }
-  expose :feedbacks, -> { fetch_feedbacks }
+
+  expose_decorated :users, -> { User.sorted }
+  expose_decorated :invites, -> { fetch_invites }
+  expose_decorated :feedbacks, -> { fetch_feedbacks }
 
   def show
     @assessment_statistics = AssessmentStatistics.new(assessment).results
