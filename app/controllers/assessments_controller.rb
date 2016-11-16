@@ -12,12 +12,12 @@ class AssessmentsController < ApplicationController
   expose_decorated :feedbacks, -> { fetch_feedbacks }
 
   def show
-    redirect_to root_path unless policy(user).show?
+    authorize assessment
     @assessment_statistics = AssessmentStatistics.new(assessment).results
   end
 
   def index
-    redirect_to root_path unless policy(user).show?
+    authorize user
   end
 
   def create
