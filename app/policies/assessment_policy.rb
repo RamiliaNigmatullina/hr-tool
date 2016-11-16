@@ -1,13 +1,19 @@
 class AssessmentPolicy < ApplicationPolicy
   def manage?
-    user.role == "hr"
+    hr?
   end
 
   def create?
-    user.role == "hr"
+    hr?
   end
 
   def show?
-    user.role == "hr" || record.user == user
+    hr? || record.user == user
+  end
+
+  private
+
+  def hr?
+    user.role == "hr"
   end
 end
