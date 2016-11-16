@@ -25,6 +25,7 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "bundler", ">= 1.8.4"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise", "3.5.6"
@@ -94,4 +95,8 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console", "~> 2.0"
+end
+
+source "https://rails-assets.org" do
+  gem "rails-assets-DataTables"
 end

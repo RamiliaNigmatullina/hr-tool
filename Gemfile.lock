@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.7.1)
       actionpack (= 4.2.7.1)
@@ -256,6 +257,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.7.1)
       sprockets-rails
+    rails-assets-DataTables (1.10.12)
+      rails-assets-jquery (>= 1.7.0)
+    rails-assets-jquery (3.1.1)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -415,6 +419,7 @@ DEPENDENCIES
   awesome_print
   brakeman
   bullet
+  bundler (>= 1.8.4)
   bundler-audit
   byebug
   capybara
@@ -459,6 +464,7 @@ DEPENDENCIES
   rack-canonical-host
   rack-mini-profiler
   rails (= 4.2.7.1)
+  rails-assets-DataTables!
   rails-erd
   rails-i18n
   rails_stdout_logging
