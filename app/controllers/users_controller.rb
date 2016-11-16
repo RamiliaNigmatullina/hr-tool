@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def update
     user.update_attributes(user_params)
-    redirect_to profile_path
+    respond_with user
   end
 
   private
