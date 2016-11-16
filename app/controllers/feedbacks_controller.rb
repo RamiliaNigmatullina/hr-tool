@@ -19,7 +19,14 @@ class FeedbacksController < ApplicationController
   def create
     feedback.save
 
-    respond_with feedback
+    result = Invites::ChangeInvitationRelevance.call(invite: feedback.invite)
+
+    if result.success?
+      respond_with feedback
+    else
+      flash[:notice] = result.message
+      render :edit
+    end
   end
 
   def update
@@ -37,6 +44,7 @@ class FeedbacksController < ApplicationController
   def feedback_params
     params.require(:feedback).permit(:user_id,
       :assessment_id,
+      :invite_id,
       "skill_feedbacks_attributes": %i(score skill_id comment))
   end
 

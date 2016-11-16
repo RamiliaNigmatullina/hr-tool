@@ -1,14 +1,16 @@
 class AssessmentsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :unarchived!
 
   respond_to :html
 
   expose :user
   expose :assessment
+
   expose :assessments, -> { user.assessments.unarchived }
-  expose :invites, -> { fetch_invites }
-  expose :feedbacks, -> { fetch_feedbacks }
+
+  expose_decorated :users, -> { User.sorted }
+  expose_decorated :invites, -> { fetch_invites }
+  expose_decorated :feedbacks, -> { fetch_feedbacks }
 
   def show
     @assessment_statistics = AssessmentStatistics.new(assessment).results
@@ -47,7 +49,4 @@ class AssessmentsController < ApplicationController
   def fetch_feedbacks
     assessment.feedbacks.includes(:user, skill_feedbacks: :skill)
   end
-
-  # def unarchived
-  # end
 end

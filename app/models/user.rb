@@ -2,24 +2,31 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :full_name, presence: true
+  validates :full_name, :role, :level, presence: true
 
   scope :sorted, -> { order(full_name: :asc) }
 
-  scope :hr, -> { where(role: "hr") }
-  scope :manager, -> { where(role: "manager") }
-  scope :lead, -> { where(role: "lead_dev") }
-  scope :senior, -> { where(role: "senior_dev") }
-  scope :middle, -> { where(role: "middle_dev") }
-  scope :junior, -> { where(role: "junior_dev") }
+  scope :employees, -> { where(role: "employee") }
+  scope :hrs, -> { where(role: "hr") }
+  scope :managers, -> { where(role: "manager") }
+  scope :leads, -> { where(role: "lead_dev") }
+  scope :seniors, -> { where(role: "senior_dev") }
+  scope :middles, -> { where(role: "middle_dev") }
+  scope :juniors, -> { where(role: "junior_dev") }
 
   has_many :assessments, dependent: :destroy
   has_many :invites, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
-  def full_name_with_role
-    "#{full_name} (#{role.upcase})"
-  end
+  ROLES = {
+    hr: "HR",
+    manager: "Менеджер",
+    lead_dev: "Lead Developer",
+    senior_dev: "Senior Developer",
+    middle_dev: "Middle Developer",
+    junior_dev: "Junior Developer",
+    employee: "Сотрудник"
+  }.freeze
 
   def self.from_omniauth(access_token)
     @data = access_token.info

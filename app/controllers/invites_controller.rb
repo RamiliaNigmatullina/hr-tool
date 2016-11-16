@@ -2,7 +2,7 @@ class InvitesController < ApplicationController
   respond_to :html
 
   expose :invite
-  expose :invites, -> { fetch_invites }
+  expose_decorated :invites, -> { fetch_invites }
 
   def index
   end
@@ -26,6 +26,6 @@ class InvitesController < ApplicationController
   end
 
   def fetch_invites
-    current_user.invites.includes(assessment: :user)
+    current_user.invites.actual.includes(assessment: :user)
   end
 end

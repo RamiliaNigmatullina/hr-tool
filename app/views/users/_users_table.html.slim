@@ -11,8 +11,8 @@ table.table
         td
           = image_tag(user.profile_image, size: "35", class: "image-circle")
           '
-          = user.full_name
+          = link_to user.full_name, user
         td = user.email
-        td = user.role
+        td = user.display_role
         td = user.level
         td = link_to "Посмотреть оценки", user_assessments_path(user)
