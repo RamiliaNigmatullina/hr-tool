@@ -54,7 +54,7 @@ end
 
 group :test do
   gem "capybara"
-  gem "capybara-webkit"
+  gem "selenium-webdriver"
   gem "codeclimate-test-reporter", require: false
   gem "database_cleaner"
   gem "email_spec"
