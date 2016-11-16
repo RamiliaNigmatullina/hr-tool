@@ -20,6 +20,10 @@ class AssessmentsController < ApplicationController
     redirect_to root_path unless policy(user).show?
   end
 
+  def new
+    redirect_to root_path unless policy(assessment).manage?
+  end
+
   def create
     assessment.user = user
     assessment.save
