@@ -419,7 +419,6 @@ DEPENDENCIES
   awesome_print
   brakeman
   bullet
-  bundler (>= 1.8.4)
   bundler-audit
   byebug
   capybara
