@@ -5,4 +5,6 @@ class Assessment < ActiveRecord::Base
   has_many :feedbacks, dependent: :destroy
 
   validates :user, :date, presence: true
+
+  scope :sorted_by_date, -> { order(date: :asc) }
 end
