@@ -12,7 +12,6 @@ gem "foundation-icons-sass-rails"
 gem "foundation-rails"
 gem "jquery-rails"
 gem "premailer-rails"
-gem 'rails-assets-DataTables', source: 'https://rails-assets.org'
 gem "sass-rails", "~> 5.0.0"
 gem "skim"
 gem "therubyracer", platforms: :ruby
@@ -97,6 +96,6 @@ group :development do
   gem "web-console", "~> 2.0"
 end
 
-# source "https://rails-assets.org" do
-#   gem "rails-assets-DataTables"
-# end
+source "https://rails-assets.org" do
+  gem "rails-assets-DataTables"
+end

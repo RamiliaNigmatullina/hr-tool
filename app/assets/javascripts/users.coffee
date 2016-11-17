@@ -1,4 +1,3 @@
 $(document).ready(() ->
-  binding.pry
-  $("table").dataTable();
+  $(".data-table").dataTable()
 )
