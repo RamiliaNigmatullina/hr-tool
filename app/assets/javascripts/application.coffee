@@ -9,6 +9,7 @@
 #= require foundation
 #= require current_user
 #= require skim
+#= require DataTables
 #= require_tree ../templates
 #= require_tree .
 
