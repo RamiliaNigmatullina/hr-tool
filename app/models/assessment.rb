@@ -6,5 +6,6 @@ class Assessment < ActiveRecord::Base
 
   validates :user, :date, presence: true
 
+  scope :unarchived, -> { where(deleted_at: nil) }
   scope :sorted_by_date, -> { order(date: :asc) }
 end

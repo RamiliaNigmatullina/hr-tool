@@ -6,9 +6,7 @@ class ApplicationPolicy
     @record = record.to_model
   end
 
-  protected
-
   def hr?
-    user.present? && user.role == "hr"
+    user && user.role == "hr"
   end
 end
