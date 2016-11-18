@@ -3,20 +3,26 @@ class AssessmentsController < ApplicationController
 
   respond_to :html
 
-  expose :user
-  expose :assessment
-
-  expose :assessments, -> { user.assessments.unarchived }
+  expose_decorated :user
+  expose_decorated :assessment
+  expose_decorated :assessments, -> { fetch_assessments }
 
   expose_decorated :users, -> { User.sorted }
   expose_decorated :invites, -> { fetch_invites }
   expose_decorated :feedbacks, -> { fetch_feedbacks }
 
   def show
+    authorize assessment
     @assessment_statistics = AssessmentStatistics.new(assessment).results
   end
 
+  def index
+    authorize user
+  end
+
   def create
+    authorize assessment
+
     assessment.user = user
     assessment.save
 
@@ -24,6 +30,8 @@ class AssessmentsController < ApplicationController
   end
 
   def update
+    authorize assessment
+
     assessment.update_attributes(assessment_params)
 
     redirect_to user_assessments_path(user)
@@ -40,6 +48,10 @@ class AssessmentsController < ApplicationController
 
   def assessment_params
     params.require(:assessment).permit(:user_id, :date)
+  end
+
+  def fetch_assessments
+    user.assessments.unarchived.sorted_by_date
   end
 
   def fetch_invites

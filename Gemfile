@@ -74,8 +74,6 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "faker"
-  gem "jasmine", "> 2.0"
-  gem "jasmine-jquery-rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.4"
   gem "rubocop", require: false
@@ -94,4 +92,8 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console", "~> 2.0"
+end
+
+source "https://rails-assets.org" do
+  gem "rails-assets-DataTables"
 end
