@@ -13,8 +13,6 @@ gem "foundation-rails"
 gem "jquery-rails"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0"
-gem "skim"
-gem "therubyracer", platforms: :ruby
 gem "uglifier", ">= 2.7.2"
 gem "jquery-datatables-rails", "~> 3.4.0"
 
@@ -30,18 +28,15 @@ gem "decent_decoration"
 gem "decent_exposure"
 gem "devise", "3.5.6"
 gem "draper"
-gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"
 gem "interactor"
 gem "kaminari"
-gem "memory_profiler"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "puma"
 gem "pundit"
 gem "rack-canonical-host"
-gem "rack-mini-profiler", require: false
 gem "rails-i18n"
 gem "responders"
 gem "rollbar"
@@ -49,7 +44,6 @@ gem "seedbank"
 gem "stackprof"
 
 group :staging, :production do
-  gem "newrelic_rpm"
   gem "rails_stdout_logging"
 end
 

@@ -8,7 +8,6 @@
 #= require jquery_ujs
 #= require foundation
 #= require current_user
-#= require skim
 #= require dataTables/jquery.dataTables
 #= require dataTables/jquery.dataTables.foundation
 #= require_tree ../templates
