@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize user
+
     user.update_attributes(user_params)
     respond_with user
   end

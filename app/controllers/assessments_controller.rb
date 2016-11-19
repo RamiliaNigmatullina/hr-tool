@@ -3,6 +3,8 @@ class AssessmentsController < ApplicationController
 
   respond_to :html
 
+  expose :invite, -> { Invite.new }
+
   expose_decorated :user
   expose_decorated :assessment
   expose_decorated :assessments, -> { fetch_assessments }

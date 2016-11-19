@@ -8,6 +8,8 @@ class InvitesController < ApplicationController
   end
 
   def create
+    authorize invite
+
     invite.save
 
     redirect_to :back
