@@ -16,6 +16,7 @@ gem "sass-rails", "~> 5.0.0"
 gem "skim"
 gem "therubyracer", platforms: :ruby
 gem "uglifier", ">= 2.7.2"
+gem "jquery-datatables-rails", "~> 3.4.0"
 
 # views
 gem "active_link_to"
@@ -89,11 +90,5 @@ group :development do
   gem "quiet_assets"
   gem "rails-erd"
   gem "slim-rails"
-  gem "spring"
-  gem "spring-commands-rspec"
   gem "web-console", "~> 2.0"
-end
-
-source "https://rails-assets.org" do
-  gem "rails-assets-DataTables"
 end
