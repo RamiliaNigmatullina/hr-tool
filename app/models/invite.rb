@@ -7,4 +7,5 @@ class Invite < ActiveRecord::Base
   validates :user, :assessment, presence: true
 
   scope :actual, -> { where(relevance: true) }
+
 end
