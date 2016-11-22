@@ -5,6 +5,4 @@ class Invite < ActiveRecord::Base
   has_one :feedback, dependent: :destroy
 
   validates :user, :assessment, presence: true
-
-  scope :actual, -> { where(relevance: true) }
 end
