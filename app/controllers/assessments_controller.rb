@@ -15,6 +15,7 @@ class AssessmentsController < ApplicationController
 
   def show
     authorize assessment
+    @assessment_comments = AssessmentComments.new(assessment).results
     @assessment_statistics = AssessmentStatistics.new(assessment).results
   end
 
@@ -65,6 +66,6 @@ class AssessmentsController < ApplicationController
   end
 
   def fetch_feedbacks
-    assessment.feedbacks.includes(:user, skill_feedbacks: :skill)
+    assessment.feedbacks.includes(:user)
   end
 end
