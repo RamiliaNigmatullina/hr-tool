@@ -4,7 +4,5 @@
       = f.input :description
 
     .form-actions
-      = f.button :submit
-      '  or
-      = link_to "Back", :back
-
+      => f.button :submit, "Сохранить"
+      = link_to "Назад", :back, class: "button hollow"

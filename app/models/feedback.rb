@@ -6,7 +6,6 @@ class Feedback < ActiveRecord::Base
   belongs_to :user
 
   validates :user, :assessment, presence: true
-
   validates :user_id, uniqueness: { scope: :invite_id }
 
   accepts_nested_attributes_for :skill_feedbacks
