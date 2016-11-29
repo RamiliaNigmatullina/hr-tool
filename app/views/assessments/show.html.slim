@@ -1,7 +1,11 @@
 .row
   .medium-12.columns
     h3 = user.full_name
-    h4 Оценка: #{assessment.date}
+    h5
+      ' Оценка:
+      = assessment.date
+      br
+      = assessment.info
     - if AssessmentPolicy.new(current_user).edit?
       = link_to "Редактировать", edit_user_assessment_path(user, assessment)
 hr
