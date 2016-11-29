@@ -31,4 +31,26 @@ feature "Sign In" do
 
     expect(page).to have_content("Вам необходимо подтвердить ваш аккаунт, прежде чем продолжить.")
   end
+
+  scenario "Visitor signs in via Google" do
+    stub_omniauth
+    visit new_user_session_path
+
+    click_link "Войти с помощью Google"
+
+    expect(page).to have_link("Выйти")
+  end
+
+  def stub_omniauth
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+      provider: "google_oauth2",
+      uid: "123 456 789",
+      info: {
+        name: "John Doe",
+        email: "john@company_name.com",
+        image: "/spec/images/default_avatar.png"
+      }
+    )
+  end
 end
