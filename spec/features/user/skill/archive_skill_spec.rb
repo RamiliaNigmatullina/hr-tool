@@ -8,8 +8,8 @@ feature "Archive Skill" do
   scenario "User arhives skill" do
     visit skills_path(skill)
 
-    click_link("Архивировать")
+    click_link "Архивировать"
 
-    expect(page).not_to have_content(skill.description)
+    expect(page).not_to have_content skill.description
   end
 end

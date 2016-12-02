@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129104811) do
+ActiveRecord::Schema.define(version: 20161202062457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20161129104811) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.string   "role"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -59,10 +65,13 @@ ActiveRecord::Schema.define(version: 20161129104811) do
 
   create_table "skills", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.datetime "deleted_at"
+    t.integer  "department_id"
   end
+
+  add_index "skills", ["department_id"], name: "index_skills_on_department_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",         null: false
@@ -87,10 +96,14 @@ ActiveRecord::Schema.define(version: 20161129104811) do
     t.string   "provider"
     t.string   "uid"
     t.string   "profile_image"
+    t.integer  "department_id"
   end
 
+  add_index "users", ["department_id"], name: "index_users_on_department_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "feedbacks", "invites"
+  add_foreign_key "skills", "departments"
+  add_foreign_key "users", "departments"
 end

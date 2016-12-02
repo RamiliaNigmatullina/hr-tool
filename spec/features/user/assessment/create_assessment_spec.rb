@@ -13,7 +13,7 @@ feature "Create Assessment" do
 
         click_button "Запланировать оценку"
 
-        expect(page).to have_content(Time.zone.today.strftime("%e %B %Y"))
+        expect(page).to have_content Time.zone.today.strftime("%e %B %Y")
       end
     end
 
@@ -23,13 +23,13 @@ feature "Create Assessment" do
       scenario "middle_dev creates assessment" do
         visit new_user_assessment_path(hr)
 
-        expect(page).to have_content("Извините, запрошенная функция недоступна.")
+        expect(page).to have_content "Извините, запрошенная функция недоступна."
       end
 
       scenario "middle_dev creates assessment for heself" do
         visit new_user_assessment_path(middle_dev)
 
-        expect(page).to have_content("Извините, запрошенная функция недоступна.")
+        expect(page).to have_content "Извините, запрошенная функция недоступна."
       end
     end
   end

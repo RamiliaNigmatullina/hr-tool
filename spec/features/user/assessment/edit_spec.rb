@@ -15,7 +15,7 @@ feature "Edit Assessment" do
         select Time.zone.tomorrow.strftime("%-d"), from: "assessment_date_3i"
         click_button "Запланировать оценку"
 
-        expect(page).to have_content(Time.zone.tomorrow.strftime("%e %B %Y"))
+        expect(page).to have_content Time.zone.tomorrow.strftime("%e %B %Y")
       end
     end
 
@@ -25,7 +25,7 @@ feature "Edit Assessment" do
       scenario "middle_dev changes date of assessment" do
         visit edit_user_assessment_path(assessment.user, assessment)
 
-        expect(page).to have_content("Извините, запрошенная функция недоступна.")
+        expect(page).to have_content "Извините, запрошенная функция недоступна."
       end
     end
   end

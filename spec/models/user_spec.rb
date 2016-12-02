@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe User do
+  it { should belong_to(:department) }
+
   it { is_expected.to validate_presence_of :full_name }
 
   describe "creates or updates itself from an oauth hash" do

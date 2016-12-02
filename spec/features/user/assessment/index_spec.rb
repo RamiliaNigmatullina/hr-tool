@@ -11,13 +11,13 @@ feature "Index" do
       it "checks hr can see his assessments" do
         visit user_assessments_path(hr)
 
-        expect(page).to have_content("Запланировать новую оценку")
+        expect(page).to have_content "Запланировать новую оценку"
       end
 
       it "checks hr can see other users assessments" do
         visit user_assessments_path(middle_dev)
 
-        expect(page).to have_content("Запланировать новую оценку")
+        expect(page).to have_content "Запланировать новую оценку"
       end
     end
 
@@ -27,13 +27,13 @@ feature "Index" do
       it "checks middle_dev can't see other users assessments" do
         visit user_assessments_path(hr)
 
-        expect(page).to have_content("Извините, запрошенная функция недоступна.")
+        expect(page).to have_content "Извините, запрошенная функция недоступна."
       end
 
       it "checks middle_dev can see his assessments" do
         visit user_assessments_path(middle_dev)
 
-        expect(page).not_to have_content(hr.full_name)
+        expect(page).not_to have_content hr.full_name
       end
     end
   end

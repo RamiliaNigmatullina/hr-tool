@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :invites, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
+  belongs_to :department
+
   ROLES = {
     hr: "HR",
     manager: "Менеджер",

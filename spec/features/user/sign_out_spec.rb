@@ -7,6 +7,6 @@ feature "Sign Out" do
     visit "/"
     click_link "Выйти"
 
-    expect(page).to have_content("Войти")
+    expect(page).to have_content "Войти"
   end
 end

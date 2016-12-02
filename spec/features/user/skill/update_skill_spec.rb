@@ -5,12 +5,12 @@ feature "Update Skill" do
 
   let(:skill) { create :skill }
 
-  scenario "User creates skill" do
+  scenario "User updates skill's description" do
     visit edit_skill_path(skill)
 
-    fill_in("Навык", with: "Новый навык")
-    click_button("Сохранить")
+    fill_in "skill[description]", with: "Новый навык"
+    click_button "Сохранить"
 
-    expect(page).to have_content("Новый навык")
+    expect(page).to have_content "Новый навык"
   end
 end

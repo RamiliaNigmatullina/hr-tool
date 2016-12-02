@@ -17,12 +17,12 @@ feature "Update Feedback" do
       click_link "Изменить"
 
       fill_in "feedback[skill_feedbacks_attributes][0][comment]", with: "Новый комментарий"
-      choose("feedback[skill_feedbacks_attributes][0][score]")
+      choose "feedback[skill_feedbacks_attributes][0][score]"
 
       click_button "Сохранить"
 
-      expect(page).to have_content("Отзыв был успешно обновлен")
-      expect(page).to have_content("Новый комментарий")
+      expect(page).to have_content "Отзыв был успешно обновлен"
+      expect(page).to have_content "Новый комментарий"
     end
   end
 end
