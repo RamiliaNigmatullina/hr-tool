@@ -5,4 +5,5 @@ class Invite < ActiveRecord::Base
   has_one :feedback, dependent: :destroy
 
   validates :user, :assessment, presence: true
+  validates :assessment_id, uniqueness: { scope: :user_id }
 end
