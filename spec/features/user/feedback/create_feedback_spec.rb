@@ -8,7 +8,7 @@ feature "Create Feedback" do
 
     before do
       create :invite, user: current_user, assessment: assessment
-      5.times { create :skill, department: assessment.user.department }
+      5.times { create :skill, :senior_dev_skill, department: assessment.user.department }
     end
 
     scenario "user creates feedback" do
