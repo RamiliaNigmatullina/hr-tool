@@ -11,7 +11,7 @@ feature "Create Assessment" do
       scenario "hr creates assessment" do
         visit new_user_assessment_path(middle_dev)
 
-        click_button "Запланировать оценку"
+        click_button "Сохранить"
 
         expect(page).to have_content Time.zone.today.strftime("%e %B %Y")
       end

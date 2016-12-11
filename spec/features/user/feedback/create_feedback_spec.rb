@@ -4,7 +4,8 @@ feature "Create Feedback" do
   describe "#create" do
     include_context "current user signed in"
 
-    let(:assessment) { create :assessment, :apply_for_senior_dev }
+    let(:middle_dev) { create :user, :middle_dev }
+    let(:assessment) { create :assessment, :apply_for_senior_dev, user: middle_dev }
 
     before do
       create :invite, user: current_user, assessment: assessment
