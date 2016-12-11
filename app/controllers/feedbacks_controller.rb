@@ -48,6 +48,6 @@ class FeedbacksController < ApplicationController
   end
 
   def fetch_skills
-    assessment.user.department.skills.where(role: User.roles[assessment.requested_role])
+    Skill.where(role: User.roles[assessment.requested_role], department: [assessment.user.department, nil])
   end
 end
