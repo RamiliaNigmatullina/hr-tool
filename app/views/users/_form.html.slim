@@ -6,7 +6,7 @@
       h6 Должность
       = f.collection_select(:role, User.roles, :first, :last)
       h6 Уровень
-      = f.input :level, collection: [1, 2, 3], label: false
+      = f.input :level, collection: 1..5, label: false
 
     .form-actions
       = f.button :submit, "Сохранить"
