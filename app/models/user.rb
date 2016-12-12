@@ -31,10 +31,8 @@ class User < ActiveRecord::Base
 
   scope :sorted, -> { order(full_name: :asc) }
 
-  User::ROLES.keys.map(&:to_s).each do |role|
-    define_method("#{role}?") do
-      role == role.to_s
-    end
+  def hr?
+    role == "hr"
   end
 
   def self.from_omniauth(access_token)
