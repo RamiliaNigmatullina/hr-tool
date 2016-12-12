@@ -4,7 +4,7 @@
   .medium-6.columns
     h3 = user.full_name
     h5 = user.department_info
-    h5 = user.info
+    h5 = user.role_with_level
   .medium-4.columns
     - if policy(assessment).new?
       = link_to "Запланировать новую оценку", new_user_assessment_path(user), class: "button"
@@ -15,10 +15,12 @@
         thead
           tr
             th Дата
+            th Претендуемая должность
             th Действия
         - assessments.each do |assessment|
           tr
-            td= assessment.date
+            td = assessment.date
+            td = assessment.requested_role
             td.actions
               => link_to "Посмотреть", user_assessment_path(user, assessment),
                                        class: "button tiny"

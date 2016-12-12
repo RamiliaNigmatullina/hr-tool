@@ -8,33 +8,28 @@ class User < ActiveRecord::Base
     :validatable,
     :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :full_name, :role, :level, presence: true
-
-  scope :sorted, -> { order(full_name: :asc) }
-
-  scope :employees, -> { where(role: "employee") }
-  scope :hrs, -> { where(role: "hr") }
-  scope :managers, -> { where(role: "manager") }
-  scope :leads, -> { where(role: "lead_dev") }
-  scope :seniors, -> { where(role: "senior_dev") }
-  scope :middles, -> { where(role: "middle_dev") }
-  scope :juniors, -> { where(role: "junior_dev") }
+  belongs_to :department
 
   has_many :assessments, dependent: :destroy
   has_many :invites, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
-  belongs_to :department
+  validates :full_name, :role, :level, presence: true
+  validates :role, inclusion: { in: %w(hr manager lead_dev senior_dev middle_dev junior_dev designer employee) }
+  validates :level, inclusion: 1..3
 
-  ROLES = {
+  scope :sorted, -> { order(full_name: :asc) }
+
+  enum role: {
     hr: "HR",
     manager: "Менеджер",
     lead_dev: "Lead Developer",
     senior_dev: "Senior Developer",
     middle_dev: "Middle Developer",
     junior_dev: "Junior Developer",
+    designer: "Дизайнер",
     employee: "Сотрудник"
-  }.freeze
+  }
 
   def self.from_omniauth(access_token)
     @data = access_token.info

@@ -1,8 +1,9 @@
 class AssessmentComments
-  attr_reader :assessment
+  attr_reader :assessment, :skills
 
   def initialize(assessment)
     @assessment = assessment
+    @skills = Skill.where(role: Skill.roles[assessment.requested_role], department: [assessment.user.department, nil])
   end
 
   def results
@@ -24,8 +25,8 @@ class AssessmentComments
 
   def body
     result = []
-    assessment.user.department.skills.each do |skill|
-      result << [skill.description, *skill_comment(skill.id)]
+    skills.each do |skill|
+      result << [skill.title, *skill_comment(skill)]
     end
     result
   end
@@ -33,7 +34,8 @@ class AssessmentComments
   def skill_comment(skill)
     result = []
     assessment.feedbacks.each do |feedback|
-      result << SkillFeedback.find_by(feedback: feedback, skill: skill).comment
+      comment = SkillFeedback.find_by(feedback: feedback, skill: skill).comment
+      result << (comment.empty? ? "Нет отзыва" : comment)
     end
     result
   end

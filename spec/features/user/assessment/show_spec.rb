@@ -4,8 +4,8 @@ feature "Show Assessment" do
   describe "#show" do
     let(:hr) { create :user, :hr }
     let(:middle_dev) { create :user, :middle_dev }
-    let(:hr_assessment) { create :assessment, :apply_for_hr, user: hr }
-    let(:middle_dev_assessment) { create :assessment, :apply_for_senior_dev, user: middle_dev }
+    let(:hr_assessment) { create :assessment, :requested_role_hr, user: hr }
+    let(:middle_dev_assessment) { create :assessment, :requested_role_senior_dev, user: middle_dev }
     let!(:lead_dev) { create :user, :lead_dev }
 
     context "when user is hr" do
@@ -20,10 +20,10 @@ feature "Show Assessment" do
       scenario "hr invites lead_dev to evaluate middle_dev" do
         visit user_assessment_path(middle_dev_assessment.user, middle_dev_assessment)
 
-        select lead_dev.decorate.full_name_with_role, from: "Сотрудник"
+        select lead_dev.decorate.user_info, from: "Сотрудник"
         click_button "Пригласить"
 
-        expect(page).to have_content lead_dev.decorate.full_name_with_role + "Удалить"
+        expect(page).to have_content lead_dev.decorate.user_info + "Удалить"
       end
     end
 

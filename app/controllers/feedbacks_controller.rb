@@ -1,19 +1,21 @@
 class FeedbacksController < ApplicationController
+  before_action :authorize!, only: %w(edit update destroy)
+
   respond_to :html
 
+  expose :feedback
   expose :assessment
 
-  expose :feedback
   expose :feedbacks, -> { current_user.feedbacks.includes(assessment: :user) }
   expose :skill_feedbacks, -> { feedback.skill_feedbacks.includes(:skill) }
-  expose :skills, -> { assessment.user.department.skills }
+  expose :skills, -> { fetch_skills }
 
   def index
   end
 
   def new
     skills.each do |skill|
-      feedback.skill_feedbacks << SkillFeedback.new(skill_id: skill.id)
+      feedback.skill_feedbacks << SkillFeedback.new(skill: skill)
     end
   end
 
@@ -39,5 +41,13 @@ class FeedbacksController < ApplicationController
 
   def feedback_params
     params.require(:feedback).permit("skill_feedbacks_attributes": %i(id score skill_id comment))
+  end
+
+  def authorize!
+    authorize feedback, :manage?
+  end
+
+  def fetch_skills
+    Skill.where(role: Skill.roles[assessment.requested_role], department: [assessment.user.department, nil])
   end
 end

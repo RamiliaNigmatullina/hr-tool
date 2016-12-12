@@ -4,7 +4,7 @@ feature "Edit Assessment" do
   describe "#edit" do
     let(:hr) { create :user, :hr }
     let(:middle_dev) { create :user, :middle_dev }
-    let(:assessment) { create :assessment, :apply_for_senior_dev, user: middle_dev }
+    let(:assessment) { create :assessment, :requested_role_senior_dev, user: middle_dev }
 
     context "when user is hr" do
       before { login_as hr }
@@ -13,7 +13,7 @@ feature "Edit Assessment" do
         visit edit_user_assessment_path(assessment.user, assessment)
 
         select Time.zone.tomorrow.strftime("%-d"), from: "assessment_date_3i"
-        click_button "Запланировать оценку"
+        click_button "Сохранить"
 
         expect(page).to have_content Time.zone.tomorrow.strftime("%e %B %Y")
       end
