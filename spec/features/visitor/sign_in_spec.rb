@@ -37,7 +37,6 @@ feature "Sign In" do
     visit new_user_session_path
 
     click_link "Войти с помощью Google"
-
     expect(page).to have_link("Выйти")
   end
 
