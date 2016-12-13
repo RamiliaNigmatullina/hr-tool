@@ -34,8 +34,11 @@ class AssessmentComments
   def skill_comment(skill)
     result = []
     assessment.feedbacks.each do |feedback|
-      comment = SkillFeedback.find_by(feedback: feedback, skill: skill).comment
-      result << (comment.empty? ? "Нет отзыва" : comment)
+      sf = feedback.skill_feedbacks.where(skill: skill).first
+
+      next unless sf
+
+      result << (sf.comment.present? ? sf.comment : "Нет отзыва")
     end
     result
   end
