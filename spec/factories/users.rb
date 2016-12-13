@@ -39,6 +39,11 @@ FactoryGirl.define do
     role "junior_dev"
   end
 
+  trait :designer do
+    email { generate :designer_email }
+    role "designer"
+  end
+
   trait :employee do
     email { generate :junior_dev_email }
     role "employee"
