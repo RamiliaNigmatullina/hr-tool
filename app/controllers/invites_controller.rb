@@ -10,7 +10,7 @@ class InvitesController < ApplicationController
   def create
     authorize invite
 
-    result = Invites::Create.call(invite: invite)
+    Invites::Create.call(invite: invite)
 
     redirect_to :back
   end
