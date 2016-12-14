@@ -10,7 +10,7 @@ class InvitesController < ApplicationController
   def create
     authorize invite
 
-    invite.save
+    Invites::Create.call(invite: invite)
 
     redirect_to :back
   end
