@@ -1,5 +1,11 @@
 class UserDecorator < ApplicationDecorator
-  delegate :id, :full_name, :email, :level, :profile_image, :role, :department_id, :hr?
+  delegate :id,
+    :role,
+    :full_name,
+    :email,
+    :level,
+    :profile_image,
+    :hr?
 
   decorates_association :invites
   decorates_association :assessments
@@ -10,15 +16,15 @@ class UserDecorator < ApplicationDecorator
   end
 
   def full_name_with_role
-    "#{object.full_name} (#{role})"
+    "#{object.full_name} (#{role_title})"
   end
 
   def department
     object.department.present? ? object.department.title : "Не указан"
   end
 
-  def role
-    User.roles[object.role]
+  def role_title
+    User::ROLES[object.role]
   end
 
   def department_info
@@ -26,7 +32,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def role_info
-    "Должность: #{role}"
+    "Должность: #{role_title}"
   end
 
   def email_info
@@ -38,14 +44,14 @@ class UserDecorator < ApplicationDecorator
   end
 
   def role_with_level
-    "#{role}, Уровень: #{object.level}"
+    "#{role_title}, Уровень: #{object.level}"
   end
 
   def user_info
     if object.department.present?
-      "#{object.full_name} (#{department}, #{role}, ур. #{object.level})"
+      "#{object.full_name} (#{department}, #{role_title}, ур. #{object.level})"
     else
-      "#{object.full_name} (#{role}, ур. #{object.level})"
+      "#{object.full_name} (#{role_title}, ур. #{object.level})"
     end
   end
 

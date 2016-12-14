@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+class @ScoreCleaner
+
+  constructor: (el) ->
+    @el = el
+    @inputs = $(@el).find("input")
+    @btnClean = $(@el).find("a")
+    @_bindEvents()
+
+  _bindEvents: ->
+    @btnClean.on "click", (event) =>
+      event.preventDefault()
+      @inputs.removeAttr("checked")
+

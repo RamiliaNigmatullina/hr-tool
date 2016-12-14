@@ -32,7 +32,7 @@ hr
   .medium-12.columns
     h4 Отзывы:
     - if feedbacks.any?
-      table
+      table.table-feedbacks
         thead
           th Навык
           - @assessment_comments[:head].each do |h|
@@ -62,10 +62,10 @@ hr
           tr
             td = ss[0]
             - feedbacks.each do |feedback|
-              - if feedback.skill_feedbacks.find_by(skill_id: ss[1]).score.present?
+              - if feedback.skill_feedbacks.find_by(skill_id: ss[1])
                 td = feedback.skill_feedbacks.find_by(skill_id: ss[1]).score
               - else
-                td -
+                td
             td = ss[2]
             td = ss[3]
 

@@ -16,7 +16,7 @@ feature "Create Feedback" do
       visit invites_path
 
       click_link "Создать отзыв"
-      Skill.where(department: assessment.user.department).count.times do |n|
+      5.times do |n|
         fill_in "feedback[skill_feedbacks_attributes][#{n}][comment]", with: "comment"
         choose "feedback[skill_feedbacks_attributes][#{n}][score]"
       end
