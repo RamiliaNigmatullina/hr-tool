@@ -12,7 +12,7 @@ class InvitesController < ApplicationController
 
     result = Invites::Create.call(invite: invite)
 
-    redirect_to :back, notice: result.comment
+    redirect_to :back
   end
 
   def destroy
