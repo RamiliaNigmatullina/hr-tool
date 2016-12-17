@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.3.3"
 
-gem "rails", "4.2.7.1"
+gem "rails", "5.0.0.1"
 gem "pg"
 
 # assets
@@ -19,15 +19,14 @@ gem "jquery-datatables-rails", "~> 3.4.0"
 # views
 gem "active_link_to"
 gem "inky-rb", require: "inky"
-gem "metamagic"
 gem "simple_form"
 gem "slim"
 
 # all other gems
 gem "decent_decoration"
 gem "decent_exposure"
-gem "devise", "3.5.6"
-gem "draper"
+gem "devise"
+gem "draper", "3.0.0.pre1"
 gem "google-analytics-rails"
 gem "health_check"
 gem "interactor"
@@ -80,8 +79,7 @@ end
 group :development do
   gem "bullet"
   gem "foreman", require: false
-  gem "letter_opener_web", "~> 1.2.0"
-  gem "quiet_assets"
+  gem "letter_opener_web"
   gem "rails-erd"
   gem "slim-rails"
   gem "web-console", "~> 2.0"
