@@ -1,4 +1,4 @@
-class Skill < ActiveRecord::Base
+class Skill < ApplicationRecord
   belongs_to :department
 
   validates :title, :role, :description, presence: true

@@ -1,4 +1,4 @@
-class Assessment < ActiveRecord::Base
+class Assessment < ApplicationRecord
   belongs_to :user
 
   has_many :invites, dependent: :destroy

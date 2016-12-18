@@ -1,4 +1,4 @@
-class Feedback < ActiveRecord::Base
+class Feedback < ApplicationRecord
   has_many :skill_feedbacks, dependent: :destroy
 
   belongs_to :assessment

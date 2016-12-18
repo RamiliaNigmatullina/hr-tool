@@ -10,8 +10,6 @@ module Authorization
 
   def user_not_authorized
     message = "Извините, запрошенная функция недоступна."
-    redirect_to :back, alert: message
-  rescue ActionController::RedirectBackError
-    redirect_to root_path, alert: message
+    redirect_back fallback_location: root_path, alert: message
   end
 end

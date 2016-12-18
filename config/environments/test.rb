@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   config.action_view.raise_on_missing_translations = true
+
+  # Run specs in order
+  config.active_support.test_order = :sorted
 end
