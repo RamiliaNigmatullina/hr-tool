@@ -11,8 +11,7 @@ class FeedbacksController < ApplicationController
   expose :skill_feedbacks, -> { feedback.skill_feedbacks.includes(:skill) }
   expose :skills, -> { fetch_skills }
 
-  def index
-  end
+  def index; end
 
   def new
     skills.each do |skill|

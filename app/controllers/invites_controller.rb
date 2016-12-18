@@ -7,8 +7,7 @@ class InvitesController < ApplicationController
   expose :invite
   expose_decorated :invites, -> { fetch_invites }
 
-  def index
-  end
+  def index; end
 
   def create
     authorize invite

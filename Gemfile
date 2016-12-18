@@ -2,19 +2,19 @@ source "https://rubygems.org"
 
 ruby "2.3.3"
 
-gem "rails", "5.0.0.1"
 gem "pg"
+gem "rails", "5.0.0.1"
 
 # assets
 gem "autoprefixer-rails"
 gem "coffee-rails"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails"
+gem "jquery-datatables-rails"
 gem "jquery-rails"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0"
 gem "uglifier", ">= 2.7.2"
-gem "jquery-datatables-rails"
 
 # views
 gem "active_link_to"
@@ -48,13 +48,13 @@ end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver"
   gem "codeclimate-test-reporter", require: false
   gem "database_cleaner"
   gem "email_spec"
   gem "formulaic"
   gem "launchy"
   gem "rspec-its"
+  gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "webmock", require: false
 end

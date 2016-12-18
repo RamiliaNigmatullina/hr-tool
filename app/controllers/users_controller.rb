@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   expose_decorated :user
   expose_decorated :users, -> { fetch_users }
 
-  def index
-  end
+  def index; end
 
   def update
     authorize user
