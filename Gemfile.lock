@@ -428,7 +428,7 @@ DEPENDENCIES
   health_check
   inky-rb
   interactor
-  jquery-datatables-rails (~> 3.4.0)
+  jquery-datatables-rails
   jquery-rails
   kaminari
   launchy

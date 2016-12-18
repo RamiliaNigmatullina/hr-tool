@@ -14,7 +14,7 @@ gem "jquery-rails"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0"
 gem "uglifier", ">= 2.7.2"
-gem "jquery-datatables-rails", "~> 3.4.0"
+gem "jquery-datatables-rails"
 
 # views
 gem "active_link_to"
