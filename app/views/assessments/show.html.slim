@@ -28,7 +28,7 @@ hr
 
 hr
 
-- if policy(assessment).manage?
+- if policy(assessment).show_results?
   .row
     .medium-12.columns
       h4 Отзывы:
@@ -52,7 +52,7 @@ hr
     h4 Результат
     .text-center
       h3 Общая сумма баллов: #{@assessment_statistics[:total_result]}
-    - if policy(assessment).manage?
+    - if policy(assessment).show_results?
       table
         thead
           th Навык
