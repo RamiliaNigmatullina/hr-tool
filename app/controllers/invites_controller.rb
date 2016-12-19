@@ -1,5 +1,6 @@
 class InvitesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize!, only: %(create destroy)
 
   respond_to :html
 
@@ -27,6 +28,10 @@ class InvitesController < ApplicationController
 
   def invite_params
     params.require(:invite).permit(:assessment_id, :user_id)
+  end
+
+  def authorize!
+    authorize invite, "#{params[:action]}?"
   end
 
   def fetch_invites
