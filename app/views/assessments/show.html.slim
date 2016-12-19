@@ -18,7 +18,8 @@ hr
       - invites.each do |invite|
         tr
           td = invite.user.user_info
-          td = link_to "Удалить", invite, method: :delete
+          - if policy(invite).destroy?
+            td = link_to "Удалить", invite, method: :delete
           td = invite.status
 
 .row
