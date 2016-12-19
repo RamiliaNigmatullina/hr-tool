@@ -457,6 +457,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   simple_form
+  simplecov
   slim
   slim-rails
   slim_lint

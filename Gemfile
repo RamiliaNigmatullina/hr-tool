@@ -56,6 +56,7 @@ group :test do
   gem "rspec-its"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
+  gem "simplecov"
   gem "webmock", require: false
 end
 
