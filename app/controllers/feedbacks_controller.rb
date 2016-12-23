@@ -11,8 +11,6 @@ class FeedbacksController < ApplicationController
   expose :skill_feedbacks, -> { feedback.skill_feedbacks.includes(:skill) }
   expose :skills, -> { fetch_skills }
 
-  def index; end
-
   def new
     skills.each do |skill|
       feedback.skill_feedbacks << SkillFeedback.new(skill: skill)
@@ -29,11 +27,6 @@ class FeedbacksController < ApplicationController
 
   def update
     feedback.update_attributes(feedback_params)
-    respond_with(feedback)
-  end
-
-  def destroy
-    feedback.destroy
     respond_with(feedback)
   end
 

@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
   mount(LetterOpenerWeb::Engine, at: "/letter_opener") if Rails.env.development?
 
-  resources :skill_feedbacks
-  resources :feedbacks
-  resources :invites
-  resources :skills
-
-  resources :invites, only: %i(create destroy)
-
   devise_for :users, controllers:
     { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
+  resources :skills
+  resources :skill_feedbacks, only: %i(create update)
+
+  resources :feedbacks, only: %i(show edit)
+  resources :invites, only: %i(index create destroy)
+
   resources :assessments, only: %i(index) do
-    resources :feedbacks
+    resources :feedbacks, only: %i(new create update)
   end
 
   resources :users, only: %i(show index update) do
