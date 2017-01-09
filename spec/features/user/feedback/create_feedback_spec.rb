@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "Create Feedback" do
   describe "#create" do
-    include_context "current user signed in"
+    include_context "hr signed in"
 
     let(:middle_dev) { create :user, :middle_dev }
     let(:assessment) { create :assessment, :requested_role_senior_dev, user: middle_dev }

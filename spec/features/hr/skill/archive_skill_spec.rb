@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Archive Skill" do
-  include_context "current user signed in"
+  include_context "hr signed in"
 
   let(:skill) { create :skill, :senior_dev_skill }
 

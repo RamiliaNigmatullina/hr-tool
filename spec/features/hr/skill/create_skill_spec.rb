@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Create Skill" do
-  include_context "current user signed in"
+  include_context "hr signed in"
 
   let(:skill_attributes) { attributes_for(:skill).slice(:title, :description) }
 
