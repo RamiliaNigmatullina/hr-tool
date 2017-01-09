@@ -2,11 +2,12 @@ class FeedbacksController < ApplicationController
   before_action :authorize!, only: %w(edit update destroy)
 
   expose :feedback
-  expose :assessment
-
   expose :feedbacks, -> { current_user.feedbacks.includes(assessment: :user) }
-  expose :skill_feedbacks, -> { feedback.skill_feedbacks.includes(:skill) }
+
   expose :skills, -> { fetch_skills }
+
+  expose_decorated :skill_feedbacks, -> { feedback.skill_feedbacks }
+  expose_decorated :assessment
 
   def new
     skills.each do |skill|
@@ -23,7 +24,7 @@ class FeedbacksController < ApplicationController
   end
 
   def update
-    feedback.update_attributes(feedback_params)
+    feedback.update(feedback_params)
     respond_with(feedback)
   end
 
