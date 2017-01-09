@@ -6,7 +6,8 @@ FactoryGirl.define do
     level 1
     department
     confirmed_at 1.hour.ago
-    email { generate :hr_email }
+    email
+    role "employee"
   end
 
   trait :hr do
@@ -42,11 +43,6 @@ FactoryGirl.define do
   trait :designer do
     email { generate :designer_email }
     role "designer"
-  end
-
-  trait :employee do
-    email { generate :junior_dev_email }
-    role "employee"
   end
 
   trait :not_confirmed do
