@@ -2,7 +2,7 @@
 
 # HR Tool
 ### Project from Flatstack Sandbox
-[![Build Status](https://semaphoreci.com/api/v1/ramilia/hr-tool/branches/master/badge.svg)](https://semaphoreci.com/ramilia/hr-tool)
+[![Build Status](https://semaphoreci.com/api/v1/ramilia/hr-tool-2/branches/master/badge.svg)](https://semaphoreci.com/ramilia/hr-tool-2)
 [![Test Coverage](https://codeclimate.com/github/FlatstackSandbox/hr-tool/badges/coverage.svg)](https://codeclimate.com/github/FlatstackSandbox/hr-tool/coverage)
 [![Code Climate](https://codeclimate.com/github/FlatstackSandbox/hr-tool/badges/gpa.svg)](https://codeclimate.com/github/FlatstackSandbox/hr-tool)
 
@@ -14,7 +14,7 @@
 1. Clone application.
 
    ```bash
-   git clone https://github.com/FlatstackSandbox/hr-tool.git
+   git clone https://github.com/RamiliaNigmatullina/hr-tool.git
    ```
 3. Run setup script
 
@@ -37,7 +37,6 @@
 ## Resources
 
 - Testing server: [https://hr-tool.herokuapp.com](https://hr-tool.herokuapp.com)
-- Tasks: [https://trello.com/b/M6fnp2sI/hr-tool](https://trello.com/b/M6fnp2sI/hr-tool)
 
 ## Credits
 
