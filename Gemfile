@@ -18,6 +18,7 @@ gem "uglifier", ">= 2.7.2"
 
 # views
 gem "active_link_to"
+gem "font-awesome-rails"
 gem "inky-rb", require: "inky"
 gem "simple_form"
 gem "slim"
