@@ -14,7 +14,7 @@ feature "Show Assessment" do
       scenario "hr see middle_dev's assessment" do
         visit user_assessment_path(middle_dev_assessment.user, middle_dev_assessment)
 
-        expect(page).to have_content "Общая сумма баллов"
+        expect(page).to have_content "Приглашенные сотрудники"
       end
 
       scenario "hr invites lead_dev to evaluate middle_dev" do
@@ -39,7 +39,7 @@ feature "Show Assessment" do
       scenario "middle_dev see his assessment" do
         visit user_assessment_path(middle_dev_assessment.user, middle_dev_assessment)
 
-        expect(page).to have_content "Общая сумма баллов"
+        expect(page).to have_content "Приглашенные сотрудники"
       end
     end
   end
